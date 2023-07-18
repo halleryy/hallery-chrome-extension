@@ -76,8 +76,7 @@ const startClock = () => {
         const currentDate = new Date();
         const h = currentDate.getHours();
         const m = currentDate.getMinutes();
-        const s = currentDate.getSeconds();
-        clock.innerHTML = `${h}:${m}:${s}`;
+        clock.innerHTML = `${h}:${m}`;
     };
 
     updateClock();
