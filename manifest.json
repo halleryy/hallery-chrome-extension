@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Hallery",
   "version": "1.0",
-  "description": "Explore new artwork for a day.",
+  "description": "Explore new piece of art today.",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
