@@ -1,21 +1,76 @@
-body {
-    margin: 0;
+* {
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+    margin: 0;
 }
 
-.image-container {
-    max-width: 80%;
-    max-height: 80%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+body {
+    position: relative;
+    height: 100vh;
+    font-family: sans-serif;
 }
 
 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+    z-index: 10;
+}
+
+.gradient-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, hsl(0, 0%, 0%, 0.9), hsl(0, 0%, 0%, 0.2));
+    z-index: 20;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: 30;
+    outline: 1px solid transparent;
+    border: none;
+    padding: 0 25px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: hsl(218, 100%, 50%);
+    color: white;
+    font-size: 18px;
+    transition: all 0.2s;
+    cursor: pointer;
+    opacity: 0.5;
+    gap: 15px;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+button svg {
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+    fill: white;
+    height: 22px;
+}
+
+.button-disabled {
+    filter: grayscale(1);
+    cursor: default;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
 }
