@@ -1,8 +1,7 @@
 # Hallery - A Chrome Extension for Art Lovers
 
-Hallery is a Chrome extension that brings the beauty of art to your new tab page. It displays a random artwork from the Hallery Art API, providing you with an artistic experience every time you open a new tab.
-
-
+Hallery is a Chrome extension that brings the beauty of art to your new tab page. It displays a random artwork from the
+Hallery Art API, providing you with an artistic experience every time you open a new tab.
 
 ## Features
 
@@ -32,7 +31,8 @@ Hallery is built with HTML, CSS, and JavaScript. It utilizes the Hallery Art API
 
 ## Credits
 
-This extension wouldn't be possible without the Hallery Art API, which provides access to a vast collection of beautiful artworks from talented artists.
+This extension wouldn't be possible without the Hallery Art API, which provides access to a vast collection of beautiful
+artworks from talented artists.
 
 ## License
 
@@ -40,8 +40,10 @@ Hallery is released under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
-Huge thanks to the developers and contributors of the Hallery Art API for making this extension possible. Also, special thanks to all art enthusiasts who find joy in discovering new and inspiring artworks.
+Huge thanks to the developers and contributors of the Hallery Art API for making this extension possible. Also, special
+thanks to all art enthusiasts who find joy in discovering new and inspiring artworks.
 
-If you have any questions, feedback, or suggestions, feel free to [contact us](mailto:nimiologyy@gmail.com). We'd love to hear from you!
+If you have any questions, feedback, or suggestions, feel free to [contact us](mailto:nimiologyy@gmail.com). We'd love
+to hear from you!
 
 Enjoy the beauty of art with Hallery!
