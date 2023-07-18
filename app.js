@@ -65,7 +65,24 @@ const isCachedImageValid = () => {
     return now - cachedTimestamp <= oneDay;
 };
 
+const startClock = () => {
+    const clock = document.getElementById("clock-container");
+
+    const updateClock = () => {
+        const currentDate = new Date();
+        const h = currentDate.getHours();
+        const m = currentDate.getMinutes();
+        const s = currentDate.getSeconds();
+        clock.innerHTML = `${h}:${m}:${s}`;
+    };
+
+    updateClock();
+    setInterval(updateClock, 1000);
+};
+
 (async () => {
+    startClock();
+
     // Load a new image when the new tab is opened
     if (!isCachedImageValid()) {
         await fetchImages();
