@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Hallery",
+  "version": "1.0",
+  "description": "Explore new artwork for a day.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "host_permissions": [
+    "https://api.hallery.art/"
+  ],
+  "permissions": ["storage"]
+}
