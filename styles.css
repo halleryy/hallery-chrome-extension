@@ -36,8 +36,8 @@ img {
 .clock-overlay div {
     animation-name: fadeInTop;
     animation-duration: 0.75s;
-    font-weight: 100;
     font-size: 120px;
+    font-family: ui-serif;
     letter-spacing: 15px;
     color: white;
 }
