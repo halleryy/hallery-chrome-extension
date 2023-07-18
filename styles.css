@@ -41,7 +41,7 @@ button {
     background-color: hsl(218, 100%, 50%);
     color: white;
     font-size: 18px;
-    transition: all 0.2s;
+    transition: opacity 0.2s, transform 0.1s linear;
     cursor: pointer;
     opacity: 0.5;
     gap: 15px;
@@ -49,6 +49,10 @@ button {
 
 button:hover {
     opacity: 1;
+}
+
+button:active {
+   transform: scale(0.95) translateY(4px);
 }
 
 button svg {
