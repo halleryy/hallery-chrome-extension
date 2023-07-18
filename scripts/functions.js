@@ -1,33 +1,6 @@
-// Choose random item from given array
-const choose = (choices) => {
-    const index = Math.floor(Math.random() * choices.length);
-    return choices[index];
-};
-
 // Choose random image from cached images in localStorage
-const randomImageFromCache = () => {
-    const urls = JSON.parse(localStorage.getItem("hallery-cache-urls"));
-    return choose(urls);
-};
-
-// Fetch 10 images from the Hallery Art API
-const fetchImages = async () => {
-    const apiUrl = "https://api.hallery.art/art/?limit=10";
-
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        if (data.results.length > 0) {
-            const urls = data.results.map((art) => art.image.url);
-
-            // Save the image URL and timestamp to localStorage
-            localStorage.setItem("hallery-cache-urls", JSON.stringify(urls));
-            localStorage.setItem("hallery-cache-timestamp", Date.now());
-        }
-    } catch (error) {
-        console.error("Error fetching image:", error);
-    }
+const loadImageFromCache = () => {
+    return JSON.parse(localStorage.getItem("hallery-cache-art"));
 };
 
 // Fetch an image from the Hallery Art API
@@ -39,19 +12,12 @@ const fetchImage = async () => {
         const data = await response.json();
 
         if (data.results.length > 0) {
-            const url = data.results[0].image.url;
+            const art = data.results[0];
 
-            // Save the image URL and timestamp to localStorage
-            const cache = JSON.parse(localStorage.getItem("hallery-cache-urls"));
+            localStorage.setItem("hallery-cache-art", JSON.stringify(art));
+            localStorage.setItem("hallery-cache-timestamp", Date.now());
 
-            cache.shift();
-            cache.push(url);
-
-            console.log(cache);
-
-            localStorage.setItem("hallery-cache-urls", JSON.stringify(cache));
-
-            return url;
+            return art;
         }
     } catch (error) {
         console.error("Error fetching image:", error);
@@ -74,9 +40,10 @@ const startClock = () => {
 
     const updateClock = () => {
         const currentDate = new Date();
-        const h = currentDate.getHours();
-        const m = currentDate.getMinutes();
-        clock.innerHTML = `${h}:${m}`;
+        const h = String(currentDate.getHours());
+        const m = String(currentDate.getMinutes());
+
+        clock.innerHTML = `${h.length === 1 ? `0${h}` : h}:${m.length === 1 ? `0${m}` : m}`;
     };
 
     updateClock();
