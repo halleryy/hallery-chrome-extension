@@ -42,6 +42,6 @@ Hallery is released under the [MIT License](LICENSE).
 
 Huge thanks to the developers and contributors of the Hallery Art API for making this extension possible. Also, special thanks to all art enthusiasts who find joy in discovering new and inspiring artworks.
 
-If you have any questions, feedback, or suggestions, feel free to [contact us](mailto:hello@example.com). We'd love to hear from you!
+If you have any questions, feedback, or suggestions, feel free to [contact us](mailto:nimiologyy@gmail.com). We'd love to hear from you!
 
 Enjoy the beauty of art with Hallery!
