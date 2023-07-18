@@ -4,25 +4,27 @@ const loadImageFromCache = () => {
 };
 
 // Fetch an image from the Hallery Art API
-const fetchImage = async () => {
-    const apiUrl = "https://api.hallery.art/art/?limit=1";
+async function fetchImages() {
+  const apiUrl = "https://api.hallery.art/art/?limit=10";
 
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
 
-        if (data.results.length > 0) {
-            const art = data.results[0];
+    if (data.results.length > 0) {
+      const images = data.results;
+      console.log(JSON.stringify(images));
 
-            localStorage.setItem("hallery-cache-art", JSON.stringify(art));
-            localStorage.setItem("hallery-cache-timestamp", Date.now());
+      // Save the images to localStorage as an array
+      localStorage.setItem("hallery-cache-art", JSON.stringify(images));
+      localStorage.setItem("hallery-cache-timestamp", Date.now());
 
-            return art;
-        }
-    } catch (error) {
-        console.error("Error fetching image:", error);
+      return images;
     }
-};
+  } catch (error) {
+    console.error("Error fetching images:", error);
+  }
+}
 
 // Function to check if the cached image is still valid (within a day)
 const isCachedImageValid = () => {
@@ -48,4 +50,12 @@ const startClock = () => {
 
     updateClock();
     setInterval(updateClock, 1000);
+};
+
+const chooseRandomImageFromCache = () => {
+  const cachedImages = JSON.parse(localStorage.getItem("hallery-cache-art"));
+  if (!cachedImages || cachedImages.length === 0) return null;
+
+  const randomIndex = Math.floor(Math.random() * cachedImages.length);
+  return cachedImages[randomIndex];
 };
