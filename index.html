@@ -3,19 +3,32 @@
     <head>
         <title>Hallery</title>
         <link rel="stylesheet" href="styles.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&family=Rubik:wght@300&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Kanit:wght@100&family=Roboto:wght@100&family=Rubik:wght@300&display=swap"
+            rel="stylesheet"
+        />
     </head>
     <body>
         <div class="image-container">
             <img id="main-image" src="" alt="Artwork" />
             <div class="clock-overlay">
                 <div class="clock" id="clock-container"></div>
-                <div class="details">
-                    <span class="details-title"></span>
-                    <span class="details-artist"></span>
-                </div>
+                <a href="#" class="details" id="link">
+                    <span class="details-title" id="title"></span>
+                    <span class="details-artist" id="artist"></span>
+                </a>
             </div>
             <button id="refresh-button">
-                Random Art
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" id="loading-icon">
                     <path
                         d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm64 160c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32zm128 64c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32zm64 128c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"
