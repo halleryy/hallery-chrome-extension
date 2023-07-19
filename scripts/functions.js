@@ -3,27 +3,37 @@ const loadImageFromCache = () => {
     return JSON.parse(localStorage.getItem("hallery-cache-art"));
 };
 
-// Fetch an image from the Hallery Art API
-async function fetchImages() {
-  const apiUrl = "https://api.hallery.art/art/?limit=10";
+// Fetch images from the Hallery Art API
+async function fetchImages(images=[]) {
+    const apiUrl = "https://api.hallery.art/art/?limit=20"; // Fetch more images initially
 
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
 
-    if (data.results.length > 0) {
-      const images = data.results;
-      console.log(JSON.stringify(images));
+        if (data.results.length > 0) {
+            for (art in data.results){
+                art = data.results[art]
+                if (art.image.width > art.image.height) {
+                    images.push(art)
+                }
+            }
+            if (images.length >= 10) {
+                console.log(JSON.stringify(images));
 
-      // Save the images to localStorage as an array
-      localStorage.setItem("hallery-cache-art", JSON.stringify(images));
-      localStorage.setItem("hallery-cache-timestamp", Date.now());
+                // Save the images to localStorage as an array
+                localStorage.setItem("hallery-cache-art", JSON.stringify(images));
+                localStorage.setItem("hallery-cache-timestamp", Date.now());
 
-      return images;
+                return images;
+            } else {
+                console.warn("Not enough images with width longer than height found. Fetching more images...");
+                return fetchImages(images);
+            }
+        }
+    } catch (error) {
+        console.error("Error fetching images:", error);
     }
-  } catch (error) {
-    console.error("Error fetching images:", error);
-  }
 }
 
 // Function to check if the cached image is still valid (within a day)
@@ -53,9 +63,9 @@ const startClock = () => {
 };
 
 const chooseRandomImageFromCache = () => {
-  const cachedImages = JSON.parse(localStorage.getItem("hallery-cache-art"));
-  if (!cachedImages || cachedImages.length === 0) return null;
+    const cachedImages = JSON.parse(localStorage.getItem("hallery-cache-art"));
+    if (!cachedImages || cachedImages.length === 0) return null;
 
-  const randomIndex = Math.floor(Math.random() * cachedImages.length);
-  return cachedImages[randomIndex];
+    const randomIndex = Math.floor(Math.random() * cachedImages.length);
+    return cachedImages[randomIndex];
 };
