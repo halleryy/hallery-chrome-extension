@@ -30,7 +30,7 @@
     refreshButton.classList.toggle("button-disabled");
 
     // Fetch new images and get a random one
-    const images = await fetchImages();
+    await fetchImages();
     const chosenArt = chooseRandomImageFromCache();
 
     if (chosenArt) {
