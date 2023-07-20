@@ -18,9 +18,8 @@ async function fetchImages(images=[]) {
                     images.push(art)
                 }
             }
+            console.log(data.results.length)
             if (images.length >= 10) {
-                console.log(JSON.stringify(images));
-
                 // Save the images to localStorage as an array
                 localStorage.setItem("hallery-cache-art", JSON.stringify(images));
                 localStorage.setItem("hallery-cache-timestamp", Date.now());
