@@ -11,5 +11,10 @@
   ],
   "permissions": [
     "storage"
-  ]
+  ],
+    "icons": {
+    "16": "public/favicon-16x16.png",
+    "32": "public/favicon-32x32.png",
+    "150": "public/mstile-150x150.png"
+  }
 }
