@@ -4,32 +4,38 @@ const loadImageFromCache = () => {
 };
 
 // Fetch images from the Hallery Art API
-async function fetchImages(images=[]) {
-    const apiUrl = "https://api.hallery.art/art/?limit=20"; // Fetch more images initially
+async function fetchImages() {
+    const apiUrl = "https://api.hallery.art/art/?limit=5"; // Fetch more images initially
+
+    const fetchFromApi = async () => {
+        let images = [];
+
+        while (true) {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            let arts = data.results;
+
+            arts = arts.filter((art) => art.image.width > art.image.height);
+
+            images = [...images, ...arts].slice(0, 20);
+
+            if (images.length >= 20) break;
+        }
+
+        return images;
+    };
 
     try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+        const arts = await fetchFromApi();
 
-        if (data.results.length > 0) {
-            for (art in data.results){
-                art = data.results[art]
-                if (art.image.width > art.image.height) {
-                    images.push(art)
-                }
-            }
-            if (images.length >= 10) {
-                console.log(JSON.stringify(images));
+        if (arts.length > 0) {
+            console.log(JSON.stringify(arts));
 
-                // Save the images to localStorage as an array
-                localStorage.setItem("hallery-cache-art", JSON.stringify(images));
-                localStorage.setItem("hallery-cache-timestamp", Date.now());
+            // Save the images to localStorage as an array
+            localStorage.setItem("hallery-cache-art", JSON.stringify(arts));
+            localStorage.setItem("hallery-cache-timestamp", Date.now());
 
-                return images;
-            } else {
-                console.warn("Not enough images with width longer than height found. Fetching more images...");
-                return fetchImages(images);
-            }
+            return arts;
         }
     } catch (error) {
         console.error("Error fetching images:", error);
