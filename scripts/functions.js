@@ -5,38 +5,37 @@ const loadImageFromCache = () => {
 
 // Fetch images from the Hallery Art API
 async function fetchImages() {
-    const apiUrl = "https://api.hallery.art/art/?limit=5"; // Fetch more images initially
+    const apiUrl = "https://api.hallery.art/art/?limit=10"; // Fetch more images initially
+
+    let images = [];
 
     const fetchFromApi = async () => {
-        let images = [];
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        let arts = data.results;
 
-        while (true) {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            let arts = data.results;
+        arts = arts.filter((art) => art.image.width > art.image.height);
 
-            arts = arts.filter((art) => art.image.width > art.image.height);
-
+        if (arts.length === 0) {
+            await fetchFromApi();
+        } else {
             images = [...images, ...arts].slice(0, 20);
-
-            if (images.length >= 20) break;
+            localStorage.setItem("hallery-cache-art", JSON.stringify(images));
         }
+    };
 
-        return images;
+    const continueFetching = async () => {
+        if (images.length < 20) {
+            await fetchFromApi();
+            continueFetching();
+        }
     };
 
     try {
-        const arts = await fetchFromApi();
+        localStorage.setItem("hallery-cache-timestamp", Date.now());
 
-        if (arts.length > 0) {
-            console.log(JSON.stringify(arts));
-
-            // Save the images to localStorage as an array
-            localStorage.setItem("hallery-cache-art", JSON.stringify(arts));
-            localStorage.setItem("hallery-cache-timestamp", Date.now());
-
-            return arts;
-        }
+        await fetchFromApi();
+        continueFetching();
     } catch (error) {
         console.error("Error fetching images:", error);
     }
