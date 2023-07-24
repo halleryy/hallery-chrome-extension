@@ -11,5 +11,10 @@
   ],
   "permissions": [
     "storage"
-  ]
+  ],
+    "icons": {
+      "16": "public/favicon-16x16.png",
+      "32": "public/favicon-32x32.png",
+    "512": "public/android-chrome-512x512.png"
+  }
 }
