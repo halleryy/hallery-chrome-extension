@@ -43,6 +43,7 @@ async function fetchImages() {
     }
 }
 
+// Preload images in background
 const preloadImages = (arts) => {
     arts.forEach((art) => {
         const imageTag = document.createElement("img");
