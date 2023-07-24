@@ -19,6 +19,8 @@ async function fetchImages() {
         if (arts.length === 0) {
             await fetchFromApi();
         } else {
+            preloadImages(arts);
+
             images = [...images, ...arts].slice(0, 20);
             localStorage.setItem("hallery-cache-art", JSON.stringify(images));
         }
@@ -40,6 +42,16 @@ async function fetchImages() {
         console.error("Error fetching images:", error);
     }
 }
+
+const preloadImages = (arts) => {
+    arts.forEach((art) => {
+        const imageTag = document.createElement("img");
+        imageTag.src = art.image.url;
+        imageTag.onload = () => {
+            console.log(art.id, "Image Loaded");
+        };
+    });
+};
 
 // Function to check if the cached image is still valid (within a day)
 const isCachedImageValid = () => {
