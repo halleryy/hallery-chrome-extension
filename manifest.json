@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Hallery",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Explore new piece of art today.",
   "chrome_url_overrides": {
     "newtab": "index.html"
