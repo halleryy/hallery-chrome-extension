@@ -3,8 +3,13 @@ const loadImageFromCache = () => {
     return JSON.parse(localStorage.getItem("hallery-cache-art"));
 };
 
+// Load backup images for offline functionality
+const loadOfflineImages = () => {
+    localStorage.setItem("hallery-cache-art", JSON.stringify(backup_images));
+};
+
 // Fetch images from the Hallery Art API
-async function fetchImages() {
+const fetchImages = async () => {
     const apiUrl = "https://api.hallery.art/art/?limit=10"; // Fetch more images initially
 
     let images = [];
@@ -41,7 +46,7 @@ async function fetchImages() {
     } catch (error) {
         console.error("Error fetching images:", error);
     }
-}
+};
 
 // Preload images in background
 const preloadImages = (arts) => {
