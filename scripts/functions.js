@@ -49,7 +49,6 @@ const preloadImages = (arts) => {
         const imageTag = document.createElement("img");
         imageTag.src = art.image.url;
         imageTag.onload = () => {
-            console.log(art.id, "Image Loaded");
         };
     });
 };
