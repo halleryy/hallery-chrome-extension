@@ -1,6 +1,14 @@
 {
-    "name": "",
-    "short_name": "",
+    "manifest_version": 3,
+    "name": "Hallery",
+    "version": "1.0.2",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone",
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "host_permissions": ["https://api.hallery.art/"],
     "icons": [
         {
             "src": "public/android-chrome-192x192.png",
@@ -12,8 +20,5 @@
             "sizes": "512x512",
             "type": "image/png"
         }
-    ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
-    "display": "standalone"
+    ]
 }
