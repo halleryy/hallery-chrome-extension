@@ -3,7 +3,11 @@
 
     // Load a new image when the new tab is opened
     if (!isCachedImageValid()) {
-        await fetchImages();
+        if (window.navigator.onLine) {
+            await fetchImages();
+        } else {
+            loadOfflineImages();
+        }
     }
 
     const chosenArt = chooseRandomImageFromCache();
