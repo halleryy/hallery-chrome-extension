@@ -30,12 +30,12 @@ async function fetchImages() {
         if (images.length < 20) {
             await fetchFromApi();
             continueFetching();
+        } else {
+            localStorage.setItem("hallery-cache-timestamp", Date.now());
         }
     };
 
     try {
-        localStorage.setItem("hallery-cache-timestamp", Date.now());
-
         await fetchFromApi();
         continueFetching();
     } catch (error) {
@@ -48,8 +48,7 @@ const preloadImages = (arts) => {
     arts.forEach((art) => {
         const imageTag = document.createElement("img");
         imageTag.src = art.image.url;
-        imageTag.onload = () => {
-        };
+        imageTag.onload = () => {};
     });
 };
 
