@@ -33,6 +33,7 @@ img {
 }
 
 .clock-overlay div {
+    user-select: none;
     animation-name: fadeInTop;
     animation-duration: 0.75s;
     font-size: 120px;
@@ -56,13 +57,20 @@ img {
 }
 
 .details-title {
+    user-select: none;
     font-size: 30px;
     color: hsl(0, 0%, 85%);
 }
 
 .details-artist {
+    user-select: none;
     font-size: 20px;
     color: hsl(0, 0%, 85%);
+}
+
+.details-title:hover,
+.details-artist:hover {
+    color: hsl(207, 62%, 57%);
 }
 
 @media screen and (max-width: 600px) {
