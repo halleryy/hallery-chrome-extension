@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Hallery",
+  "version": "1.0.3",
+  "description": "Explore new piece of art today.",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "host_permissions": [
+    "https://api.hallery.art/"
+  ],
+  "icons": {
+    "16": "public/favicon-16x16.png",
+    "32": "public/favicon-32x32.png",
+    "150": "public/mstile-150x150.png"
+  }
+}
