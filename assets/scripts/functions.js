@@ -90,3 +90,8 @@ const chooseRandomImageFromCache = () => {
     const randomIndex = Math.floor(Math.random() * cachedImages.length);
     return cachedImages[randomIndex];
 };
+
+// see if there is internet connection
+const checkConnection = () => {
+    return navigator.onLine;
+}

@@ -1,11 +1,17 @@
 (async () => {
     startClock();
-
-    // Load a new image when the new tab is opened
-    if (!isCachedImageValid()) {
+    // log the connection status
+    console.log(checkConnection());
+    if (checkConnection()) {
+        // Load a new image when the new tab is opened
+        if (!isCachedImageValid()) {
+            loadOfflineImages();
+            fetchImages();
+        }
+    } else {
         loadOfflineImages();
-        fetchImages();
     }
+
 
     const chosenArt = chooseRandomImageFromCache();
     if (chosenArt) {
